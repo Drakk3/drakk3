@@ -1,222 +1,68 @@
 ---
 ---
 
-<section id="hero" class="hero">
-  <div class="container hero-inner">
-    <div class="hero-content">
-      <p class="hero-greeting">Hi, I'm <span class="accent">drakk3</span></p>
-      <h1 class="hero-title">Software<br />Developer</h1>
-      <p class="hero-subtitle">
+<section id="hero" class="relative min-h-svh flex items-center overflow-hidden pt-16">
+  <!-- Glow bg -->
+  <div class="pointer-events-none absolute inset-0 z-0" aria-hidden="true">
+    <div class="absolute -top-1/5 -right-1/10 w-[600px] h-[600px] rounded-full bg-primary/[0.07] blur-[80px]"></div>
+  </div>
+
+  <div class="container relative z-10 max-w-[1100px] mx-auto px-6 py-20 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <!-- Text -->
+    <div>
+      <p class="text-base text-muted-foreground mb-4 animate-[fade-up_0.6s_ease_both]">
+        Hi, I'm <span class="text-primary font-semibold">drakk3</span>
+      </p>
+
+      <h1 class="text-[clamp(52px,8vw,80px)] font-extrabold leading-[1.05] tracking-[-2px] text-foreground mb-6 animate-[fade-up_0.6s_0.1s_ease_both]">
+        Software<br />Developer
+      </h1>
+
+      <p class="text-[17px] text-muted-foreground leading-[1.75] max-w-[420px] mb-10 animate-[fade-up_0.6s_0.2s_ease_both]">
         I build fast, scalable web and mobile applications — turning complex problems into clean, purposeful products.
       </p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+
+      <div class="flex flex-wrap gap-4 animate-[fade-up_0.6s_0.3s_ease_both]">
+        <!-- shadcn Button rendered as <a> via asChild pattern — using Astro we write the markup directly -->
+        <a
+          href="#projects"
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-semibold transition-all h-10 px-6 bg-primary text-primary-foreground hover:bg-primary/90 shadow hover:-translate-y-0.5 hover:shadow-[0_8px_24px_hsl(271,76%,61%,0.35)]"
+        >
+          View Projects
+        </a>
+        <a
+          href="#contact"
+          class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-semibold transition-all h-10 px-6 border border-border bg-transparent text-foreground hover:border-primary hover:text-primary hover:-translate-y-0.5"
+        >
+          Contact Me
+        </a>
       </div>
     </div>
 
-    <div class="hero-decoration" aria-hidden="true">
-      <div class="code-block">
-        <div class="code-line"><span class="kw">const</span> <span class="fn">dev</span> = {"{"}
-          <div class="code-indent">
-            <span class="key">name</span>: <span class="str">"drakk3"</span>,<br/>
-            <span class="key">role</span>: <span class="str">"Software Developer"</span>,<br/>
-            <span class="key">focus</span>: [<span class="str">"Web"</span>, <span class="str">"Mobile"</span>],<br/>
-            <span class="key">available</span>: <span class="bool">true</span>,
-          </div>
-        {"}"}</div>
+    <!-- Code decoration -->
+    <div class="hidden md:block animate-[fade-up_0.6s_0.4s_ease_both]">
+      <div class="relative rounded-lg border border-border bg-card p-7 font-mono text-[13.5px] leading-[1.8] text-muted-foreground overflow-hidden">
+        <!-- top accent line -->
+        <div class="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-primary/60 to-transparent"></div>
+
+        <span class="text-[#c084fc]">const </span>
+        <span class="text-[#93c5fd]">dev</span>
+        <span> = &#123;</span>
+        <br />
+        <span class="pl-6 block">
+          <span class="text-[#f0abfc]">name</span>: <span class="text-[#86efac]">"drakk3"</span>,
+        </span>
+        <span class="pl-6 block">
+          <span class="text-[#f0abfc]">role</span>: <span class="text-[#86efac]">"Software Developer"</span>,
+        </span>
+        <span class="pl-6 block">
+          <span class="text-[#f0abfc]">focus</span>: [<span class="text-[#86efac]">"Web"</span>, <span class="text-[#86efac]">"Mobile"</span>],
+        </span>
+        <span class="pl-6 block">
+          <span class="text-[#f0abfc]">available</span>: <span class="text-[#fb923c]">true</span>,
+        </span>
+        <span>&#125;</span>
       </div>
     </div>
-  </div>
-
-  <div class="hero-bg" aria-hidden="true">
-    <div class="glow"></div>
   </div>
 </section>
-
-<style>
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-    overflow: hidden;
-    padding-top: 64px;
-  }
-
-  .hero-bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .glow {
-    position: absolute;
-    top: -20%;
-    right: -10%;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(168, 85, 247, 0.08) 0%, transparent 70%);
-    filter: blur(40px);
-  }
-
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 64px;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
-
-  .hero-greeting {
-    font-size: 18px;
-    color: var(--text-secondary);
-    margin-bottom: 16px;
-    font-weight: 400;
-    animation: fadeInUp 0.6s ease forwards;
-  }
-
-  .accent {
-    color: var(--accent);
-    font-weight: 600;
-  }
-
-  .hero-title {
-    font-size: clamp(52px, 8vw, 80px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -2px;
-    color: var(--text-primary);
-    margin-bottom: 24px;
-    animation: fadeInUp 0.6s 0.1s ease both;
-  }
-
-  .hero-subtitle {
-    font-size: 17px;
-    color: var(--text-secondary);
-    line-height: 1.75;
-    max-width: 420px;
-    margin-bottom: 40px;
-    animation: fadeInUp 0.6s 0.2s ease both;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-    animation: fadeInUp 0.6s 0.3s ease both;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 28px;
-    border-radius: var(--radius-sm);
-    font-size: 14px;
-    font-weight: 600;
-    transition: all 0.2s ease;
-    letter-spacing: 0.3px;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #fff;
-    border: 1px solid var(--accent);
-  }
-
-  .btn-primary:hover {
-    background: var(--accent-dim);
-    border-color: var(--accent-dim);
-    transform: translateY(-1px);
-    box-shadow: 0 8px 24px rgba(168, 85, 247, 0.3);
-  }
-
-  .btn-ghost {
-    background: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border);
-  }
-
-  .btn-ghost:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    transform: translateY(-1px);
-  }
-
-  /* Code decoration */
-  .hero-decoration {
-    animation: fadeInUp 0.6s 0.4s ease both;
-  }
-
-  .code-block {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px 32px;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-    font-size: 13.5px;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .code-block::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, var(--accent-dim), transparent);
-  }
-
-  .code-line {
-    display: block;
-  }
-
-  .code-indent {
-    padding-left: 24px;
-    display: block;
-  }
-
-  .kw { color: #c084fc; }
-  .fn { color: #93c5fd; }
-  .key { color: #f0abfc; }
-  .str { color: #86efac; }
-  .bool { color: #fb923c; }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @media (max-width: 860px) {
-    .hero-inner {
-      grid-template-columns: 1fr;
-      gap: 48px;
-    }
-
-    .hero-decoration {
-      display: none;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero-title {
-      letter-spacing: -1px;
-    }
-  }
-</style>
