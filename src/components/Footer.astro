@@ -1,0 +1,101 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-stack">
+      <span class="stack-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+          <path d="M2 12h20"/>
+        </svg>
+        Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="stack-link">Astro</a>
+      </span>
+      <span class="divider" aria-hidden="true">·</span>
+      <span class="stack-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="2"/>
+          <path d="M3 9h18"/>
+          <path d="M9 21V9"/>
+        </svg>
+        Styled with <span class="stack-link">CSS</span>
+      </span>
+      <span class="divider" aria-hidden="true">·</span>
+      <span class="stack-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5L12 1z"/>
+        </svg>
+        Deployed on <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="stack-link">Vercel</a>
+      </span>
+    </div>
+
+    <p class="footer-copy">
+      © {year}
+      <a href="https://github.com/drakk3" target="_blank" rel="noopener noreferrer" class="copy-link">
+        drakk3
+      </a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-stack {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+
+  .stack-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .divider {
+    color: var(--border);
+  }
+
+  .stack-link {
+    color: var(--text-secondary);
+    transition: color 0.2s;
+  }
+
+  .stack-link:hover {
+    color: var(--accent);
+  }
+
+  .footer-copy {
+    font-size: 13px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .copy-link {
+    color: var(--text-secondary);
+    transition: color 0.2s;
+  }
+
+  .copy-link:hover {
+    color: var(--accent);
+  }
+</style>
