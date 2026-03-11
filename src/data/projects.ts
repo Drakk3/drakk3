@@ -1,49 +1,64 @@
-export type Status = 'Deployed' | 'In Development' | 'Contributor';
+export type Status = 'Deployed' | 'In Development' | 'Completed';
+export type Category = 'Tech' | 'Operations';
 
 export const projects: {
   name: string;
   description: string;
   status: Status;
+  category: Category;
   tags: string[];
   gradient: string;
   url: string;
 }[] = [
   {
-    name: 'DevFlow',
-    description: 'A full-stack project management tool built for developer teams — with kanban boards, sprint planning, and GitHub integration.',
+    name: 'API Explorer',
+    description: 'Web app for consuming and testing third-party REST APIs — built to practice real-world HTTP request handling, authentication flows, and dynamic data rendering.',
     status: 'Deployed',
-    tags: ['Next.js', 'PostgreSQL', 'TypeScript'],
-    gradient: 'linear-gradient(135deg,#1a0035 0%,#0d001a 50%,#000 100%)',
+    category: 'Tech',
+    tags: ['JavaScript', 'REST API', 'Fetch'],
+    gradient: 'linear-gradient(135deg,#0f0028 0%,#1a0035 50%,#000 100%)',
     url: 'https://github.com/drakk3',
   },
   {
-    name: 'Pocket Finance',
-    description: 'Cross-platform mobile app for personal budget tracking with AI-powered spending insights and real-time bank sync.',
+    name: 'drakk3 Assistant',
+    description: "Intelligent assistant running on a Raspberry Pi — integrates OpenAI's API for natural language processing and Plaid API for financial data context. Built with JavaScript, designed to run as a local always-on device.",
     status: 'In Development',
-    tags: ['React Native', 'Node.js', 'MongoDB'],
-    gradient: 'linear-gradient(135deg,#001a0d 0%,#001a00 50%,#000 100%)',
+    category: 'Tech',
+    tags: ['JavaScript', 'OpenAI API', 'Plaid API', 'Raspberry Pi'],
+    gradient: 'linear-gradient(135deg,#001a28 0%,#000d1a 50%,#000 100%)',
     url: 'https://github.com/drakk3',
   },
   {
-    name: 'OpenLog',
-    description: 'Lightweight open-source logging service with structured logs, query language, and real-time dashboard for self-hosted deployments.',
-    status: 'Deployed',
-    tags: ['Python', 'Docker', 'GraphQL'],
-    gradient: 'linear-gradient(135deg,#001528 0%,#000d1a 50%,#000 100%)',
+    name: 'Luxury Dept. Structuring & Training',
+    description: 'Full structuring and onboarding program for the Luxury department — defined roles, built training materials, and established operational standards to ensure consistency and performance from day one.',
+    status: 'Completed',
+    category: 'Operations',
+    tags: ['Team Training', 'SOP Design', 'Dept. Structuring'],
+    gradient: 'linear-gradient(135deg,#1a1200 0%,#0d0900 50%,#000 100%)',
     url: 'https://github.com/drakk3',
   },
   {
-    name: 'UIkit-Dark',
-    description: 'An accessible dark-mode component library for React with 40+ components, Figma tokens, and TypeScript-first API.',
-    status: 'Contributor',
-    tags: ['React', 'Tailwind', 'Storybook'],
-    gradient: 'linear-gradient(135deg,#1a0a00 0%,#120500 50%,#000 100%)',
+    name: 'SOP Optimization & Confluence Implementation',
+    description: 'Reviewed and restructured Standard Operating Procedures across operations and corporate levels. Migrated and organized all documentation into Confluence, creating a centralized, searchable knowledge base aligned with company structure.',
+    status: 'Completed',
+    category: 'Operations',
+    tags: ['SOP', 'Confluence', 'Process Optimization', 'Documentation'],
+    gradient: 'linear-gradient(135deg,#001a14 0%,#000d0a 50%,#000 100%)',
+    url: 'https://github.com/drakk3',
+  },
+  {
+    name: 'National & International Training Program',
+    description: 'Building a cross-border training initiative to extend DC Las Vegas operational processes and standards to national and international warehouse locations — standardizing workflows, adapting SOPs for each region, and developing a scalable training infrastructure.',
+    status: 'In Development',
+    category: 'Operations',
+    tags: ['Training', 'International Ops', 'DC Las Vegas', 'Warehouse Management'],
+    gradient: 'linear-gradient(135deg,#001428 0%,#000a1a 50%,#000 100%)',
     url: 'https://github.com/drakk3',
   },
 ];
 
 export const badgeVariant: Record<Status, string> = {
-  'Deployed':        'success',
+  'Deployed':        'deployed',
   'In Development':  'warning',
-  'Contributor':     'info',
+  'Completed':       'completed',
 };
