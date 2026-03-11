@@ -5,7 +5,7 @@ import { skills, technicalServices, operationalServices } from '@/data/skills';
 <section id="skills" class="py-24">
   <!-- Section header -->
   <div class="container max-w-275 mx-auto px-6 mb-14">
-    <p class="text-xs font-semibold tracking-[3px] uppercase text-primary mb-4">What I work with</p>
+    <p class="text-xs font-semibold tracking-[3px] uppercase text-muted-foreground mb-4">What I work with</p>
     <h2 class="text-[clamp(28px,4vw,42px)] font-bold leading-tight text-foreground">Skills &amp; Services</h2>
   </div>
 
@@ -17,7 +17,7 @@ import { skills, technicalServices, operationalServices } from '@/data/skills';
   >
     <div class="flex w-max gap-4 animate-marquee hover:[animation-play-state:paused] py-2">
       {[...skills, ...skills].map((skill) => (
-        <div class="flex items-center gap-2.5 bg-card border border-border rounded-full py-2 pl-2 pr-5 whitespace-nowrap transition-all duration-200 hover:-translate-y-0.5 hover:border-primary/40 select-none cursor-default">
+        <div class="flex items-center gap-2.5 bg-card border border-zinc-800 rounded-full py-2 pl-2 pr-5 whitespace-nowrap transition-all duration-200 hover:-translate-y-0.5 hover:border-zinc-600 select-none cursor-default">
           <span
             class="w-8 h-8 rounded-full border flex items-center justify-center text-[13px] font-bold shrink-0"
             style={`color:${skill.color};background:${skill.bg};border-color:${skill.color}22`}
@@ -39,15 +39,15 @@ import { skills, technicalServices, operationalServices } from '@/data/skills';
         <p class="text-xs font-semibold tracking-[3px] uppercase text-muted-foreground mb-5">Technical</p>
         <div class="flex flex-col gap-4">
           {technicalServices.map((service) => (
-            <div class="group relative rounded-lg border border-border bg-card p-6 transition-all duration-250 hover:-translate-y-1 hover:border-primary/30 overflow-hidden">
-              <div class="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-primary/80 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <h3 class="text-base font-bold text-foreground mb-4 pb-3 border-b border-border">
+            <div class="group relative rounded-lg border border-zinc-800 bg-card p-6 transition-all duration-250 hover:-translate-y-1 hover:border-zinc-600 overflow-hidden">
+              <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <h3 class="text-base font-bold text-foreground mb-4 pb-3 border-b border-zinc-800">
                 {service.title}
               </h3>
               <ul class="space-y-3">
                 {service.items.map((item) => (
                   <li class="flex items-center gap-2.5 text-sm text-muted-foreground">
-                    <span class="text-primary text-[10px]">▸</span>
+                    <span class="text-zinc-500 text-[10px]">▸</span>
                     {item}
                   </li>
                 ))}
@@ -62,15 +62,15 @@ import { skills, technicalServices, operationalServices } from '@/data/skills';
         <p class="text-xs font-semibold tracking-[3px] uppercase text-muted-foreground mb-5">Operational &amp; Leadership</p>
         <div class="flex flex-col gap-4">
           {operationalServices.map((service) => (
-            <div class="group relative rounded-lg border border-border bg-card p-6 transition-all duration-250 hover:-translate-y-1 hover:border-primary/30 overflow-hidden">
-              <div class="absolute top-0 left-0 right-0 h-0.5 bg-linear-to-r from-primary/80 to-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <h3 class="text-base font-bold text-foreground mb-4 pb-3 border-b border-border">
+            <div class="group relative rounded-lg border border-zinc-800 bg-card p-6 transition-all duration-250 hover:-translate-y-1 hover:border-zinc-600 overflow-hidden">
+              <div class="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <h3 class="text-base font-bold text-foreground mb-4 pb-3 border-b border-zinc-800">
                 {service.title}
               </h3>
               <ul class="space-y-3">
                 {service.items.map((item) => (
                   <li class="flex items-center gap-2.5 text-sm text-muted-foreground">
-                    <span class="text-primary text-[10px]">▸</span>
+                    <span class="text-zinc-500 text-[10px]">▸</span>
                     {item}
                   </li>
                 ))}
