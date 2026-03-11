@@ -1,31 +1,25 @@
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 
-type FormState = 'idle' | 'submitting' | 'success';
+type FormState = 'idle' | 'success';
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState<FormState>('idle');
+  const [isPending, startTransition] = useTransition();
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setStatus('submitting');
-    setTimeout(() => {
+  function handleSubmit(_formData: FormData) {
+    startTransition(async () => {
+      await new Promise<void>((resolve) => setTimeout(resolve, 900));
       setStatus('success');
-      setForm({ name: '', email: '', message: '' });
-    }, 900);
-  };
+    });
+  }
 
   return (
     <section id="contact" className="py-24 border-t border-border">
-      <div className="container max-w-[1100px] mx-auto px-6">
+      <div className="container max-w-275 mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
 
           {/* Left — info */}
@@ -36,7 +30,7 @@ export default function Contact() {
             <h2 className="text-[clamp(28px,4vw,42px)] font-bold leading-tight text-foreground mb-4">
               Get in touch
             </h2>
-            <p className="text-base text-muted-foreground leading-relaxed max-w-[400px] mb-8">
+            <p className="text-base text-muted-foreground leading-relaxed max-w-100 mb-8">
               Have a project in mind, a question, or just want to say hi?
               My inbox is always open.
             </p>
@@ -44,11 +38,7 @@ export default function Contact() {
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-3 text-sm text-muted-foreground">
                 <span className="text-base">📍</span>
-                <span>Buenos Aires, Argentina</span>
-              </div>
-              <div className="flex items-center gap-3 text-sm text-muted-foreground">
-                <span className="text-base">⏰</span>
-                <span>GMT-3 · Available for freelance</span>
+                <span>Las Vegas, US</span>
               </div>
             </div>
           </div>
@@ -72,15 +62,13 @@ export default function Contact() {
                 </Button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5" noValidate>
+              <form action={handleSubmit} className="flex flex-col gap-5" noValidate>
                 <div className="flex flex-col gap-2">
                   <Label htmlFor="name">Name</Label>
                   <Input
                     id="name"
                     name="name"
                     placeholder="Your name"
-                    value={form.name}
-                    onChange={handleChange}
                     autoComplete="name"
                     required
                   />
@@ -93,8 +81,6 @@ export default function Contact() {
                     id="email"
                     name="email"
                     placeholder="you@example.com"
-                    value={form.email}
-                    onChange={handleChange}
                     autoComplete="email"
                     required
                   />
@@ -107,18 +93,12 @@ export default function Contact() {
                     name="message"
                     rows={5}
                     placeholder="Tell me about your project or idea..."
-                    value={form.message}
-                    onChange={handleChange}
                     required
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  disabled={status === 'submitting'}
-                  className="mt-1"
-                >
-                  {status === 'submitting' ? (
+                <Button type="submit" disabled={isPending} className="mt-1">
+                  {isPending ? (
                     <>
                       <span
                         className="w-3.5 h-3.5 rounded-full border-2 border-white/30 border-t-white animate-spin"
