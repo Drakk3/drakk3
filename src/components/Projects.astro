@@ -1,120 +1,123 @@
 ---
-type BadgeStatus = 'Deployed' | 'In Development' | 'Contributor';
+type Status = 'Deployed' | 'In Development' | 'Contributor';
 
 const projects: {
   name: string;
   description: string;
-  status: BadgeStatus;
+  status: Status;
   tags: string[];
   gradient: string;
   url: string;
 }[] = [
   {
     name: 'DevFlow',
-    description:
-      'A full-stack project management tool built for developer teams — with kanban boards, sprint planning, and GitHub integration.',
+    description: 'A full-stack project management tool built for developer teams — with kanban boards, sprint planning, and GitHub integration.',
     status: 'Deployed',
     tags: ['Next.js', 'PostgreSQL', 'TypeScript'],
-    gradient: 'linear-gradient(135deg, #1a0035 0%, #0d001a 50%, #000 100%)',
+    gradient: 'linear-gradient(135deg,#1a0035 0%,#0d001a 50%,#000 100%)',
     url: 'https://github.com/drakk3',
   },
   {
     name: 'Pocket Finance',
-    description:
-      'Cross-platform mobile app for personal budget tracking with AI-powered spending insights and real-time bank sync.',
+    description: 'Cross-platform mobile app for personal budget tracking with AI-powered spending insights and real-time bank sync.',
     status: 'In Development',
     tags: ['React Native', 'Node.js', 'MongoDB'],
-    gradient: 'linear-gradient(135deg, #001a0d 0%, #001a00 50%, #000 100%)',
+    gradient: 'linear-gradient(135deg,#001a0d 0%,#001a00 50%,#000 100%)',
     url: 'https://github.com/drakk3',
   },
   {
     name: 'OpenLog',
-    description:
-      'Lightweight open-source logging service with structured logs, query language, and real-time dashboard for self-hosted deployments.',
+    description: 'Lightweight open-source logging service with structured logs, query language, and real-time dashboard for self-hosted deployments.',
     status: 'Deployed',
     tags: ['Python', 'Docker', 'GraphQL'],
-    gradient: 'linear-gradient(135deg, #001528 0%, #000d1a 50%, #000 100%)',
+    gradient: 'linear-gradient(135deg,#001528 0%,#000d1a 50%,#000 100%)',
     url: 'https://github.com/drakk3',
   },
   {
     name: 'UIkit-Dark',
-    description:
-      'An accessible dark-mode component library for React with 40+ components, Figma tokens, and TypeScript-first API.',
+    description: 'An accessible dark-mode component library for React with 40+ components, Figma tokens, and TypeScript-first API.',
     status: 'Contributor',
     tags: ['React', 'Tailwind', 'Storybook'],
-    gradient: 'linear-gradient(135deg, #1a0a00 0%, #120500 50%, #000 100%)',
+    gradient: 'linear-gradient(135deg,#1a0a00 0%,#120500 50%,#000 100%)',
     url: 'https://github.com/drakk3',
   },
 ];
 
-const badgeColors: Record<BadgeStatus, { color: string; bg: string }> = {
-  Deployed: { color: '#4ade80', bg: 'rgba(74, 222, 128, 0.1)' },
-  'In Development': { color: '#facc15', bg: 'rgba(250, 204, 21, 0.1)' },
-  Contributor: { color: '#818cf8', bg: 'rgba(129, 140, 248, 0.1)' },
+// maps to shadcn Badge variants defined in badge.tsx
+const badgeVariant: Record<Status, string> = {
+  'Deployed':        'success',
+  'In Development':  'warning',
+  'Contributor':     'info',
 };
 ---
 
-<section id="projects" class="section">
-  <div class="container">
-    <p class="section-label">What I've built</p>
-    <h2 class="section-title">Projects</h2>
-    <p class="section-subtitle">
+<section id="projects" class="py-24">
+  <div class="container max-w-[1100px] mx-auto px-6">
+    <p class="text-xs font-semibold tracking-[3px] uppercase text-primary mb-4">What I've built</p>
+    <h2 class="text-[clamp(28px,4vw,42px)] font-bold leading-tight text-foreground mb-3">Projects</h2>
+    <p class="text-base text-muted-foreground max-w-[480px] leading-relaxed mb-14">
       A selection of work — personal products, open-source contributions, and client projects.
     </p>
 
-    <div class="projects-grid">
-      {
-        projects.map((project) => {
-          const badge = badgeColors[project.status];
-          return (
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="project-card"
-            >
-              <div
-                class="project-image"
-                style={`background: ${project.gradient};`}
-              >
-                <div class="project-image-inner">
-                  <span class="project-initial">{project.name[0]}</span>
-                </div>
-              </div>
-              <div class="project-body">
-                <div class="project-header">
-                  <h3 class="project-name">{project.name}</h3>
-                  <span
-                    class="badge"
-                    style={`color: ${badge.color}; background: ${badge.bg};`}
-                  >
-                    {project.status}
-                  </span>
-                </div>
-                <p class="project-desc">{project.description}</p>
-                <div class="project-tags">
-                  {project.tags.map((tag) => (
-                    <span class="tag">{tag}</span>
-                  ))}
-                </div>
-                <span class="project-link">
-                  View project →
+    <!-- 2-col grid of shadcn Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+      {projects.map((project) => (
+        <a
+          href={project.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group flex flex-col rounded-lg border border-border bg-card overflow-hidden transition-all duration-250 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]"
+        >
+          <!-- Card image area -->
+          <div class="h-40 flex items-center justify-center" style={`background:${project.gradient}`}>
+            <div class="w-16 h-16 rounded-2xl bg-white/5 border border-white/8 flex items-center justify-center backdrop-blur-sm">
+              <span class="text-3xl font-black text-white/50 font-mono">{project.name[0]}</span>
+            </div>
+          </div>
+
+          <!-- Card body -->
+          <div class="flex flex-col gap-3 p-6 flex-1">
+            <div class="flex items-center justify-between gap-3">
+              <h3 class="text-[17px] font-bold text-foreground">{project.name}</h3>
+              <!-- Badge component markup -->
+              <span class:list={[
+                'inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold whitespace-nowrap',
+                badgeVariant[project.status] === 'success' && 'border-transparent bg-emerald-500/10 text-emerald-400',
+                badgeVariant[project.status] === 'warning' && 'border-transparent bg-yellow-500/10 text-yellow-400',
+                badgeVariant[project.status] === 'info'    && 'border-transparent bg-indigo-500/10 text-indigo-400',
+              ]}>
+                {project.status}
+              </span>
+            </div>
+
+            <p class="text-[13.5px] text-muted-foreground leading-relaxed">{project.description}</p>
+
+            <!-- Tags -->
+            <div class="flex flex-wrap gap-1.5 mt-1">
+              {project.tags.map(tag => (
+                <span class="text-[11px] font-medium text-muted-foreground/70 bg-secondary border border-border px-2.5 py-0.5 rounded">
+                  {tag}
                 </span>
-              </div>
-            </a>
-          );
-        })
-      }
+              ))}
+            </div>
+
+            <span class="mt-auto text-[13px] font-medium text-primary group-hover:text-primary/80 transition-colors">
+              View project →
+            </span>
+          </div>
+        </a>
+      ))}
     </div>
 
-    <div class="github-cta">
+    <!-- GitHub CTA -->
+    <div class="flex justify-center">
       <a
         href="https://github.com/drakk3"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-github"
+        class="inline-flex items-center gap-2.5 h-10 px-8 rounded-md border border-border bg-transparent text-sm font-semibold text-muted-foreground transition-all hover:border-foreground/40 hover:text-foreground hover:-translate-y-0.5"
       >
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
         </svg>
         More projects on GitHub
@@ -122,156 +125,3 @@ const badgeColors: Record<BadgeStatus, { color: string; bg: string }> = {
     </div>
   </div>
 </section>
-
-<style>
-  .section-subtitle {
-    margin-bottom: 56px;
-  }
-
-  .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-bottom: 48px;
-  }
-
-  .project-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-  }
-
-  .project-card:hover {
-    border-color: var(--border-accent);
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-  }
-
-  .project-image {
-    height: 160px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .project-image-inner {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(8px);
-  }
-
-  .project-initial {
-    font-size: 28px;
-    font-weight: 800;
-    color: rgba(255,255,255,0.6);
-    font-family: monospace;
-  }
-
-  .project-body {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex: 1;
-  }
-
-  .project-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
-  .project-name {
-    font-size: 17px;
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-
-  .badge {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 10px;
-    border-radius: 100px;
-    white-space: nowrap;
-    letter-spacing: 0.3px;
-  }
-
-  .project-desc {
-    font-size: 13.5px;
-    color: var(--text-secondary);
-    line-height: 1.65;
-  }
-
-  .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 4px;
-  }
-
-  .tag {
-    font-size: 11px;
-    font-weight: 500;
-    color: var(--text-muted);
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    padding: 3px 10px;
-    border-radius: 4px;
-  }
-
-  .project-link {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--accent);
-    margin-top: auto;
-    transition: color 0.2s;
-  }
-
-  .project-card:hover .project-link {
-    color: #c084fc;
-  }
-
-  /* GitHub CTA */
-  .github-cta {
-    display: flex;
-    justify-content: center;
-  }
-
-  .btn-github {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 13px 32px;
-    border-radius: var(--radius-sm);
-    border: 1px solid var(--border);
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    transition: all 0.2s;
-  }
-
-  .btn-github:hover {
-    border-color: var(--text-secondary);
-    color: var(--text-primary);
-    transform: translateY(-1px);
-  }
-
-  @media (max-width: 680px) {
-    .projects-grid {
-      grid-template-columns: 1fr;
-    }
-  }
-</style>

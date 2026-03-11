@@ -2,100 +2,52 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-stack">
-      <span class="stack-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+<footer class="border-t border-border py-8">
+  <div class="container max-w-[1100px] mx-auto px-6 flex flex-wrap items-center justify-between gap-4">
+
+    <div class="flex flex-wrap items-center gap-2.5 text-xs text-muted-foreground">
+      <span class="flex items-center gap-1.5">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <circle cx="12" cy="12" r="10"/>
           <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
           <path d="M2 12h20"/>
         </svg>
-        Built with <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="stack-link">Astro</a>
+        Built with
+        <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="text-foreground/60 hover:text-primary transition-colors">Astro</a>
       </span>
-      <span class="divider" aria-hidden="true">·</span>
-      <span class="stack-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+
+      <span class="text-border" aria-hidden="true">·</span>
+
+      <span class="flex items-center gap-1.5">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <rect x="3" y="3" width="18" height="18" rx="2"/>
-          <path d="M3 9h18"/>
-          <path d="M9 21V9"/>
+          <path d="M3 9h18M9 21V9"/>
         </svg>
-        Styled with <span class="stack-link">CSS</span>
+        Styled with
+        <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="text-foreground/60 hover:text-primary transition-colors">Tailwind</a>
+        +
+        <a href="https://ui.shadcn.com" target="_blank" rel="noopener noreferrer" class="text-foreground/60 hover:text-primary transition-colors">shadcn/ui</a>
       </span>
-      <span class="divider" aria-hidden="true">·</span>
-      <span class="stack-item">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+
+      <span class="text-border" aria-hidden="true">·</span>
+
+      <span class="flex items-center gap-1.5">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5L12 1z"/>
         </svg>
-        Deployed on <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="stack-link">Vercel</a>
+        Deployed on
+        <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" class="text-foreground/60 hover:text-primary transition-colors">Vercel</a>
       </span>
     </div>
 
-    <p class="footer-copy">
+    <p class="text-xs text-muted-foreground">
       © {year}
-      <a href="https://github.com/drakk3" target="_blank" rel="noopener noreferrer" class="copy-link">
-        drakk3
-      </a>
+      <a
+        href="https://github.com/drakk3"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-foreground/60 hover:text-primary transition-colors"
+      >drakk3</a>
     </p>
   </div>
 </footer>
-
-<style>
-  .footer {
-    padding: 32px 0;
-    border-top: 1px solid var(--border);
-  }
-
-  .footer-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-
-  .footer-stack {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    font-size: 13px;
-    color: var(--text-muted);
-  }
-
-  .stack-item {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-  }
-
-  .divider {
-    color: var(--border);
-  }
-
-  .stack-link {
-    color: var(--text-secondary);
-    transition: color 0.2s;
-  }
-
-  .stack-link:hover {
-    color: var(--accent);
-  }
-
-  .footer-copy {
-    font-size: 13px;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .copy-link {
-    color: var(--text-secondary);
-    transition: color 0.2s;
-  }
-
-  .copy-link:hover {
-    color: var(--accent);
-  }
-</style>
