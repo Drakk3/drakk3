@@ -1,2 +1,2 @@
-https://drakk3-x.netlify.app/
+https://drakk3.netlify.app/
 🚀
